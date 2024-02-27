@@ -1,7 +1,4 @@
-package com.github.supercoding.repository;
-
-import com.github.supercoding.web.dto.Item;
-import com.github.supercoding.web.dto.ItemBody;
+package com.github.supercoding.repository.items;
 
 import java.util.List;
 

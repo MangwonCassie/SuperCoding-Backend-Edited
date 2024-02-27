@@ -1,7 +1,7 @@
 package com.github.supercoding.service;
 
-import com.github.supercoding.repository.ElectonicStoreItemRepository;
-import com.github.supercoding.repository.ItemEntity;
+import com.github.supercoding.repository.items.ElectonicStoreItemRepository;
+import com.github.supercoding.repository.items.ItemEntity;
 import com.github.supercoding.web.dto.Item;
 import com.github.supercoding.web.dto.ItemBody;
 import org.springframework.stereotype.Service;

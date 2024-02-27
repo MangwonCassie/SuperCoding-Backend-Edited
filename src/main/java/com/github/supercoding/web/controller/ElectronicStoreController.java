@@ -1,7 +1,5 @@
 package com.github.supercoding.web.controller;
 
-import com.github.supercoding.repository.ElectonicStoreItemRepository;
-import com.github.supercoding.repository.ItemEntity;
 import com.github.supercoding.service.ElectronicStoreItemService;
 import com.github.supercoding.web.dto.Item;
 import com.github.supercoding.web.dto.ItemBody;
@@ -10,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @RestController

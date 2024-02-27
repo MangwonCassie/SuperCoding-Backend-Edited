@@ -16,7 +16,7 @@ public class JdbcConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("12341234");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver"); //이 스트링 값 넣어줘야 MySQL 드라이버 등록됨
-        dataSource.setUrl("jdbc:mysql://localhost:3306/chapter_95");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/chapter_96");
         return dataSource;
     }
 
