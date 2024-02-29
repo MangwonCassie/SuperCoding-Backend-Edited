@@ -29,9 +29,9 @@ public class StoreSalesJdbcTemplateDao implements StoreSalesRepository {
 
     @Override
     public void updateSalesAmount(Integer storeId, Integer amount) {
-        jdbcTemplate.update("UPDATE store_sales" +
-                            "SET amount = ?" +
-                            "WHERE id = ?", amount, storeId);
+        jdbcTemplate.update(" UPDATE store_sales " +
+                            " SET amount = ? " +
+                            " WHERE id = ? ", amount, storeId);
 
     }
 }

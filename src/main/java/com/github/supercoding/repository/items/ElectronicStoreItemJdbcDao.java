@@ -72,8 +72,8 @@ public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository 
     @Override
     public void updateItemStock(Integer itemId, Integer stock) {
         jdbcTemplate.update("UPDATE item " +
-                        "SET stock = ?" +
-                        "WHERE id = ?",
+                        " SET stock = ? " +
+                        " WHERE id = ? ",
                         stock, itemId);
 
     }
