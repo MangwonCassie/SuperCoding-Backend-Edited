@@ -27,6 +27,20 @@ public class ItemEntity {
         this.capacity = capacity;
     }
 
+    //NOTE: 모두 다 들어간 생성자
+
+
+    public ItemEntity(Integer id, String name, String type, Integer price, Integer storeId, Integer stock, String cpu, String capacity) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.storeId = storeId;
+        this.stock = stock;
+        this.cpu = cpu;
+        this.capacity = capacity;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -18,6 +18,8 @@ public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository 
                     rs.getNString("name"),
                     rs.getNString("type"),
                     rs.getInt("price"),
+                    rs.getInt("store_id"),
+                    rs.getInt("stock"),
                     rs.getNString("cpu"),
                     rs.getNString("capacity"))));
 
@@ -64,5 +66,15 @@ public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository 
     @Override
     public ItemEntity findItemById(Integer idInt) {
         return jdbcTemplate.queryForObject("SELECT * FROM item WHERE id = ?", itemEntityRowMapper, idInt);
+    }
+
+
+    @Override
+    public void updateItemStock(Integer itemId, Integer stock) {
+        jdbcTemplate.update("UPDATE item " +
+                        "SET stock = ?" +
+                        "WHERE id = ?",
+                        stock, itemId);
+
     }
 }

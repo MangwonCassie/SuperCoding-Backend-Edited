@@ -1,6 +1,7 @@
 package com.github.supercoding.web.controller;
 
 import com.github.supercoding.service.ElectronicStoreItemService;
+import com.github.supercoding.web.dto.BuyOrder;
 import com.github.supercoding.web.dto.Item;
 import com.github.supercoding.web.dto.ItemBody;
 import org.springframework.web.bind.annotation.*;
@@ -65,4 +66,11 @@ public class ElectronicStoreController {
     public Item updateItem (@PathVariable String id, @RequestBody ItemBody itemBody) {
         return electonicStoreItemService.updateItem(id, itemBody);
     };
+
+    //NOTE: storeSales 테이블 추가 후  http://localhost:8080/v3/api/items/buy
+    @PostMapping("/items/buy")
+    public String buyItem(@RequestBody BuyOrder buyOrder){
+        Integer orderItemNums = electonicStoreItemService.buyItems(buyOrder);
+        return "요청하신 Item 중 " +  orderItemNums + "개를 구매하였습니다.";
+    }
 }

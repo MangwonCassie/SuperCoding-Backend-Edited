@@ -15,4 +15,5 @@ public interface ElectonicStoreItemRepository {
 
     ItemEntity findItemById(Integer idInt);
 
+    void updateItemStock(Integer itemId, Integer stock);
 }
