@@ -9,7 +9,6 @@ import java.util.List;
 @Repository
 public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository {
 
-
     private JdbcTemplate jdbcTemplate;
 
     static RowMapper<ItemEntity> itemEntityRowMapper = ((rs, rowNum) -> (
