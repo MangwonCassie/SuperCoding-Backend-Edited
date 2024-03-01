@@ -8,6 +8,7 @@ import com.github.supercoding.web.dto.BuyOrder;
 import com.github.supercoding.web.dto.Item;
 import com.github.supercoding.web.dto.ItemBody;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,6 +79,7 @@ public class ElectronicStoreItemService {
     }
 
 
+    @Transactional(transactionManager = "tm1")
     public Integer buyItems(BuyOrder buyOrder) {
         //로직 구현
         //1. BuyOrder에서 상품 Id와 수량을 얻는다.

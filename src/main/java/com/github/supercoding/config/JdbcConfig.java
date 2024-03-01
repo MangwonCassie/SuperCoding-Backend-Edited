@@ -40,12 +40,10 @@ public class JdbcConfig {
 
     @Bean(name="tm1")
     public PlatformTransactionManager transactionManager1(){return new DataSourceTransactionManager(dataSource1());}
-    }
 
     @Bean(name="tm2")
     public PlatformTransactionManager transactionManager2(){return new DataSourceTransactionManager(dataSource2());}
-    }
+
+};
 
 
-
-}
