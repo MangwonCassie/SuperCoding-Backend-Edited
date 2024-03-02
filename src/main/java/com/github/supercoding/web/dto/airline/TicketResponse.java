@@ -9,6 +9,7 @@ public class TicketResponse {
     }
 
     public TicketResponse(List<Ticket> tickets) {
+        this.tickets=tickets;
     }
 
     public List<Ticket> getTickets() {

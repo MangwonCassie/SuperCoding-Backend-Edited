@@ -28,4 +28,6 @@ public class AirReservationController {
         List<Ticket> tickets = airReservationService.findUserFavoritePlaceTickets(userId, ticketType);
         return new TicketResponse(tickets);
     }
+
+
 }
