@@ -16,6 +16,11 @@ public class AirReservationService {
     private UserRepository userRepository;
     private AirLineTicketRepository airLineTicketRepository;
 
+    public AirReservationService(UserRepository userRepository, AirLineTicketRepository airLineTicketRepository) {
+        this.userRepository = userRepository;
+        this.airLineTicketRepository = airLineTicketRepository;
+    }
+
     public List<Ticket> findUserFavoritePlaceTickets(Integer userId, String ticketType) {
         //필요한 Repository: UserRepository, airLineTicket Repository
         //1. 유저를 userId로 가져와서, 선호하는 여행지 도출
