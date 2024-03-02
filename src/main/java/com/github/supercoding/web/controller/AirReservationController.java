@@ -24,7 +24,7 @@ public class AirReservationController {
 
     @GetMapping("/tickets")
     public TicketResponse findAirlineTickets(@RequestParam("user-id") Integer userId,
-                                             @RequestParam("airline-ticket") String ticketType){
+                                             @RequestParam("airline-ticket-type") String ticketType){
         List<Ticket> tickets = airReservationService.findUserFavoritePlaceTickets(userId, ticketType);
         return new TicketResponse(tickets);
     }
