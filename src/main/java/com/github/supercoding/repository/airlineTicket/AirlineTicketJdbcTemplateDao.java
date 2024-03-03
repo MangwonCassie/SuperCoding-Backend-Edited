@@ -47,10 +47,11 @@ public class AirlineTicketJdbcTemplateDao implements AirLineTicketRepository {
 
     @Override
     public List<AirlineTicketAndFlightInfo> findAllAirlineTicketAndFlightInfo(Integer airlineTicketId) {
-      return jdbcTemplate.query("SELECT A.ticket_id, A.tax, A.total_price, F.flight_price, F.charge " +
-              "    FROM airline_ticket A " +
-              "         INNER JOIN flight F " +
-              "         ON A.ticket_id = F.ticket_id " +
-              "     WHERE A.ticket_id = ?", airlineTicketAndFlightInfoRowMapper, airlineTicketId);
+        return jdbcTemplate.query("SELECT A.ticket_id, A.tax, A.total_price, F.flight_price, F.charge " +
+                "    FROM airline_ticket A " +
+                "         INNER JOIN flight F " +
+                "         ON A.ticket_id = F.ticket_id " +
+                "     WHERE A.ticket_id = ?", airlineTicketAndFlightInfoRowMapper, airlineTicketId);
+    }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class ReservationJdbcTemplateDao {
+public class ReservationJdbcTemplateDao implements ReservationRepository {
     private JdbcTemplate template;
 
     public ReservationJdbcTemplateDao(@Qualifier("jdbcTemplate2") JdbcTemplate jdbcTemplate) {
