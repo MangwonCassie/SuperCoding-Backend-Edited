@@ -2,6 +2,7 @@ package com.github.supercoding.service;
 
 import com.github.supercoding.repository.airlineTicket.AirLineTicketRepository;
 import com.github.supercoding.repository.airlineTicket.AirlineTicket;
+import com.github.supercoding.repository.airlineTicket.AirlineTicketAndFlightInfo;
 import com.github.supercoding.repository.passenger.Passenger;
 import com.github.supercoding.repository.passenger.PassengerRepository;
 import com.github.supercoding.repository.reservations.ReservationRepository;
@@ -55,6 +56,13 @@ public class AirReservationService {
 
         //1. Passenger
         Passenger passenger = passengerRepository.findPassengerByUserId(userId);
+        Integer passengerId = passenger.getPassengerId();
+        
+        //2. price 등 정보 가져오기
+        
+       List<AirlineTicketAndFlightInfo> airlineTicketAndFlightInfo = airLineTicketRepository.
+               findAllAirlineTicketAndFlightInfo(airlineTicketId); //조인해서 불러올 예정
+        //3. reservation 생성
         
     }
 }

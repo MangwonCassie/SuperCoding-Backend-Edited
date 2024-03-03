@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface AirLineTicketRepository {
     List<AirlineTicket> findAllAirlineTicketsWithPlaceAndTicketType(String likePlace, String ticketType);
+
+    List<AirlineTicketAndFlightInfo> findAllAirlineTicketAndFlightInfo(Integer airlineTicketId);
 }
