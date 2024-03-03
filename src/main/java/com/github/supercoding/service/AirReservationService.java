@@ -12,6 +12,7 @@ import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +48,8 @@ public class AirReservationService {
         return tickets;
     }
 
+
+    @Transactional
     public ReservationResult makeReservation(ReservationRequest reservationRequest) {
         //NOTE: 1. Reservation Repository, Join Table (flight/airline_ticket), userId가져올 때 User테이블 아닌 passenger 테이블에서 가져옴
 
@@ -63,6 +66,10 @@ public class AirReservationService {
        List<AirlineTicketAndFlightInfo> airlineTicketAndFlightInfo = airLineTicketRepository.
                findAllAirlineTicketAndFlightInfo(airlineTicketId); //조인해서 불러올 예정
         //3. reservation 생성
+        Reservation reservation = new Reservation(passengerId, airlineTicketId);
+        Boolean isSuccess = reservationRepository.saveReservation(reservation);
+        
+        //4. TODO: Reservation DTO 만들기
         
     }
 }
