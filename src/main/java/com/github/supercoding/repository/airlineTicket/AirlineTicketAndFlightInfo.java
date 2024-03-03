@@ -9,12 +9,12 @@ public class AirlineTicketAndFlightInfo {
     private Integer tax;
     private Integer totalPrice;
 
-    public AirlineTicketAndFlightInfo(Integer ticketId, Integer price, Integer charge, Integer tax, Integer totalPrice) {
+    public AirlineTicketAndFlightInfo(Integer ticketId, Double price, Double charge, Double tax, Double totalPrice) {
         this.ticketId = ticketId;
-        this.price = price;
-        this.charge = charge;
-        this.tax = tax;
-        this.totalPrice = totalPrice;
+        this.price = price.intValue();
+        this.charge = charge.intValue();
+        this.tax = tax.intValue();
+        this.totalPrice = totalPrice.intValue();
     }
 
     public Integer getTicketId() {

@@ -27,7 +27,17 @@ public class AirlineTicketJdbcTemplateDao implements AirLineTicketRepository {
                     rs.getDouble("total_price")
             )
     ));
-
+    
+    //AirLineTicketAndFlightInfo를 위한 RowMapper는 없음 very impo ticket id를 join 통해서 가져올예정 (airline_ticket & flight)
+    static RowMapper<AirlineTicketAndFlightInfo> airlineTicketAndFlightInfoRowMapper
+            = (((rs, rowNum) -> 
+            new AirlineTicketAndFlightInfo(
+                    rs.getInt("A.ticket_id"),
+                    rs.getDouble("F.flight_price"),
+                    rs.getDouble(("F.charge")),
+                    rs.getDouble("A.tax"),
+                    rs.getDouble("A.total_price")
+            )));
 
     @Override
     public List<AirlineTicket> findAllAirlineTicketsWithPlaceAndTicketType(String likePlace, String ticketType) {
