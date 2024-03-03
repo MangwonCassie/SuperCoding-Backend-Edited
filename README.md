@@ -9,7 +9,11 @@ Repository 필드를 Service에 주입하는 것은 Spring의 의존성 주입(D
 
 
 ⬛class96-3 실습내용:
+![proceed_reservation](https://github.com/MangwonCassie/SuperCoding-Backend-Edited/assets/129250487/f859cc50-2dfa-46dd-a9d2-5efbc5da5413)
+
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class):
 Snake Case로 요청 들어온거를 Json으로 바꾸도록 처리해야함.
+
+
 
 
