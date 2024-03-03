@@ -74,6 +74,12 @@ public class AirReservationService {
         Boolean isSuccess = reservationRepository.saveReservation(reservation);
         
         //4. TODO: Reservation DTO 만들기
-        
+
+        List<Integer> prices = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getPrice).collect(Collectors.toList());
+        List<Integer> charges = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getCharge).collect(Collectors.toList());
+        Integer tax = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getTax).findFirst().get();
+        Integer totalPrice = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getTotalPrice).findFirst().get();
+
+        return new ReservationResult(prices, charges, tax, totalPrice, isSuccess);
     }
 }
