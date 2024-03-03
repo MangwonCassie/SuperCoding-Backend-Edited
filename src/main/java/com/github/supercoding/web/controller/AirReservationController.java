@@ -30,7 +30,7 @@ public class AirReservationController {
 
     @PostMapping("/reservations")
     public ReservationResult makeReservation(@RequestBody ReservationRequest reservationRequest){
-
+        return airReservationService.makeReservation(reservationRequest);
     }
 
 

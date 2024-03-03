@@ -2,8 +2,12 @@ package com.github.supercoding.service;
 
 import com.github.supercoding.repository.airlineTicket.AirLineTicketRepository;
 import com.github.supercoding.repository.airlineTicket.AirlineTicket;
+import com.github.supercoding.repository.passenger.PassengerRespository;
+import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
+import com.github.supercoding.web.dto.airline.ReservationRequest;
+import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +19,10 @@ public class AirReservationService {
 
     private UserRepository userRepository;
     private AirLineTicketRepository airLineTicketRepository;
+
+    private PassengerRespository passengerRespository;
+
+    private ReservationRepository reservationRepository;
 
     public AirReservationService(UserRepository userRepository, AirLineTicketRepository airLineTicketRepository) {
         this.userRepository = userRepository;
@@ -35,5 +43,11 @@ public class AirReservationService {
 
        List<Ticket> tickets = airlineTickets.stream().map(Ticket:: new).collect(Collectors.toList());
         return tickets;
+    }
+
+    public ReservationResult makeReservation(ReservationRequest reservationRequest) {
+        //NOTE: 1. Reservation Repository, Join Table (flight/airline_ticket), userId가져올 때 User테이블 아닌 passenger 테이블에서 가져옴
+
+        
     }
 }
