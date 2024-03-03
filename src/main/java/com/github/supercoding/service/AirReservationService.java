@@ -5,6 +5,8 @@ import com.github.supercoding.repository.airlineTicket.AirlineTicket;
 import com.github.supercoding.repository.airlineTicket.AirlineTicketAndFlightInfo;
 import com.github.supercoding.repository.passenger.Passenger;
 import com.github.supercoding.repository.passenger.PassengerRepository;
+import com.github.supercoding.repository.reservations.Reservation;
+
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
@@ -27,9 +29,11 @@ public class AirReservationService {
 
     private ReservationRepository reservationRepository;
 
-    public AirReservationService(UserRepository userRepository, AirLineTicketRepository airLineTicketRepository) {
+    public AirReservationService(UserRepository userRepository, AirLineTicketRepository airLineTicketRepository, PassengerRepository passengerRepository, ReservationRepository reservationRepository) {
         this.userRepository = userRepository;
         this.airLineTicketRepository = airLineTicketRepository;
+        this.passengerRepository = passengerRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     public List<Ticket> findUserFavoritePlaceTickets(Integer userId, String ticketType) {

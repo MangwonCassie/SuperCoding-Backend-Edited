@@ -14,7 +14,7 @@ public class Reservation {
     public Reservation(Integer passengerId, Integer airlineTicketId) {
         this.passengerId = passengerId;
         this.airlineTicketId = airlineTicketId;
-        this.reservationStatus = "대기";
+        this.reservationStatus = "대기"; //NOTE: 대기 OR 확정
         this.reserveAt = LocalDateTime.now();
     }
 
@@ -76,3 +76,4 @@ public class Reservation {
     public int hashCode() {
         return reservationId.hashCode();
     }
+}

@@ -35,4 +35,9 @@ public class AirlineTicketJdbcTemplateDao implements AirLineTicketRepository {
                 "WHERE arrival_loc = ? AND ticket_type = ?", airlineTicketRowMapper, likePlace, ticketType);
     }
 
+    @Override
+    public List<AirlineTicketAndFlightInfo> findAllAirlineTicketAndFlightInfo(Integer airlineTicketId) {
+        return null;
+    }
+
 }
