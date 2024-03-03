@@ -2,10 +2,12 @@ package com.github.supercoding.repository.reservations;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 
+@Repository
 public class ReservationJdbcTemplateDao implements ReservationRepository {
     private JdbcTemplate template;
 
