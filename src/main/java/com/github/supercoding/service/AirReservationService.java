@@ -2,7 +2,8 @@ package com.github.supercoding.service;
 
 import com.github.supercoding.repository.airlineTicket.AirLineTicketRepository;
 import com.github.supercoding.repository.airlineTicket.AirlineTicket;
-import com.github.supercoding.repository.passenger.PassengerRespository;
+import com.github.supercoding.repository.passenger.Passenger;
+import com.github.supercoding.repository.passenger.PassengerRepository;
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
@@ -20,7 +21,7 @@ public class AirReservationService {
     private UserRepository userRepository;
     private AirLineTicketRepository airLineTicketRepository;
 
-    private PassengerRespository passengerRespository;
+    private PassengerRepository passengerRepository;
 
     private ReservationRepository reservationRepository;
 
@@ -48,6 +49,12 @@ public class AirReservationService {
     public ReservationResult makeReservation(ReservationRequest reservationRequest) {
         //NOTE: 1. Reservation Repository, Join Table (flight/airline_ticket), userId가져올 때 User테이블 아닌 passenger 테이블에서 가져옴
 
+        //ReservationRequest 에 UserId, AirlineTicketId 있으니까 가져올 수 있음
+        Integer userId = reservationRequest.getUserId();
+        Integer airlineTicketId = reservationRequest.getAirlineTicketId();
+
+        //1. Passenger
+        Passenger passenger = passengerRepository.findPassengerByUserId(userId);
         
     }
 }
