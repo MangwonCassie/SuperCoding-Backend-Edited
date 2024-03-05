@@ -1,5 +1,6 @@
 package com.github.supercoding.repository.items;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -7,10 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Repository
 public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     static RowMapper<ItemEntity> itemEntityRowMapper = ((rs, rowNum) -> (
             new ItemEntity(
@@ -22,10 +24,6 @@ public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository 
                     rs.getInt("stock"),
                     rs.getNString("cpu"),
                     rs.getNString("capacity"))));
-
-    public ElectronicStoreItemJdbcDao(@Qualifier("jdbcTemplate1") JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     @Override
     public List<ItemEntity> findAllItems() {
