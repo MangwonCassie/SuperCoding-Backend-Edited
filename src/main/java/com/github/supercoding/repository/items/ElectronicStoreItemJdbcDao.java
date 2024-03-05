@@ -13,15 +13,13 @@ public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository 
     private final JdbcTemplate jdbcTemplate;
 
     static RowMapper<ItemEntity> itemEntityRowMapper = ((rs, rowNum) -> (
-            new ItemEntity(
-                    rs.getInt("id"),
-                    rs.getNString("name"),
-                    rs.getNString("type"),
-                    rs.getInt("price"),
-                    rs.getInt("store_id"),
-                    rs.getInt("stock"),
-                    rs.getNString("cpu"),
-                    rs.getNString("capacity"))));
+            new ItemEntity.ItemEntityBuilder().id(
+                    rs.getInt("id"))
+                            .name(rs.getNString("name"))
+                    .type( rs.getNString("type"))
+                    .price(rs.getInt("price"))
+                    .cpu( rs.getNString("cpu"))
+                    .capacity( rs.getNString("capacity")).build()));
 
     public ElectronicStoreItemJdbcDao(@Qualifier("jdbcTemplate1") JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

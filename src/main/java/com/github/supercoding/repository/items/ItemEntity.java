@@ -9,6 +9,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
+@Builder
 public class ItemEntity {
     private Integer id;
     private String name;
