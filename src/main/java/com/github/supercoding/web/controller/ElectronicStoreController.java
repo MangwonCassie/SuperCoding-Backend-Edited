@@ -17,7 +17,6 @@ public class ElectronicStoreController {
 
     private ElectronicStoreItemService electonicStoreItemService;
 
-
     public ElectronicStoreController(ElectronicStoreItemService electonicStoreItemService) {
         this.electonicStoreItemService = electonicStoreItemService;
     }
