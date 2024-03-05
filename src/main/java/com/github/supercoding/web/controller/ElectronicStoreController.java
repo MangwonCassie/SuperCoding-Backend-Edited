@@ -4,6 +4,7 @@ import com.github.supercoding.service.ElectronicStoreItemService;
 import com.github.supercoding.web.dto.BuyOrder;
 import com.github.supercoding.web.dto.Item;
 import com.github.supercoding.web.dto.ItemBody;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,13 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class ElectronicStoreController {
 
     private ElectronicStoreItemService electonicStoreItemService;
-
-    public ElectronicStoreController(ElectronicStoreItemService electonicStoreItemService) {
-        this.electonicStoreItemService = electonicStoreItemService;
-    }
 
     private static int serialItemId = 1;
     private List<Item> items = new ArrayList<>(Arrays.asList(
