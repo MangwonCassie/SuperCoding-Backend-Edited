@@ -1,9 +1,6 @@
 package com.github.supercoding.repository.items;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
@@ -11,6 +8,7 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class ItemEntity {
     private Integer id;
     private String name;
