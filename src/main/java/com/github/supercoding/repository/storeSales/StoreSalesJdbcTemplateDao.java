@@ -16,12 +16,10 @@ public class StoreSalesJdbcTemplateDao implements StoreSalesRepository {
 
     //NOTE: find를 하기위해서는 RowMapper가 필요
     static RowMapper<StoreSales> storeSalesRowMapper = ((rs, rowNum) ->
-            new StoreSales(
-                    rs.getInt("id"),
-                    rs.getString("store_name"),
-                    rs.getInt("amount")
-            )
-    );
+            new StoreSales.StoreSalesBuilder().id(rs.getInt("id"))
+                    .storeName(  rs.getString("store_name"))
+                    .amount(     rs.getInt("amount")).build()
+            );
 
     @Override
     public StoreSales findStoreSalesById(Integer storeId) {

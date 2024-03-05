@@ -9,6 +9,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
+@Builder
 public class StoreSales {
     private Integer id;
     private String storeName;
