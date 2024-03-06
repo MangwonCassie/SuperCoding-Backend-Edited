@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ElectronicStoreController {
 
-    private ElectronicStoreItemService electronicStoreItemService;
+    private final ElectronicStoreItemService electronicStoreItemService;
     private static int serialItemId = 1;
     private List<Item> items = new ArrayList<>(Arrays.asList(
             new Item (String.valueOf(serialItemId++), "Apple iPhone12", "Smartphone", 1490000, "A14 Bionic", "512GB"),
@@ -28,7 +28,6 @@ public class ElectronicStoreController {
 
     @GetMapping("/items")
     public List<Item> findAllItem (){
-
         return electronicStoreItemService.findAllItem();
     }
 
