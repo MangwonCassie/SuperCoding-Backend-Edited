@@ -1,6 +1,6 @@
 package com.github.supercoding.service;
 
-import com.github.supercoding.repository.items.ElectonicStoreItemRepository;
+import com.github.supercoding.repository.items.ElectronicStoreItemRepository;
 import com.github.supercoding.repository.items.ItemEntity;
 import com.github.supercoding.repository.storeSales.StoreSales;
 import com.github.supercoding.repository.storeSales.StoreSalesRepository;
@@ -18,38 +18,40 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ElectronicStoreItemService {
 
-    private final ElectonicStoreItemRepository electronicStoreRepository;
+
+    private final ElectronicStoreItemRepository electronicStoreItemRepository;
     private final StoreSalesRepository storeSalesRepository;
 
 
     public List<Item> findAllItem() {
-        List<ItemEntity> itemEntities =  electronicStoreRepository.findAllItems();
+        List<ItemEntity> itemEntities =  electronicStoreItemRepository.findAllItems();
         return itemEntities.stream().map(Item::new).collect(Collectors.toList());
     }
+
 
     public Integer saveItem(ItemBody itemBody) {
         ItemEntity itemEntity = new ItemEntity(null, itemBody.getName(), itemBody.getType(),
                 itemBody.getPrice(), itemBody.getSpec().getCpu(), itemBody.getSpec().getCapacity());
-        return electronicStoreRepository.saveItem(itemEntity);
+        return electronicStoreItemRepository.saveItem(itemEntity);
     }
 
     public Item findItemById(String id) {
         Integer idInt = Integer.parseInt(id);
-        ItemEntity itemEntity = electronicStoreRepository.findItemById(idInt);
+        ItemEntity itemEntity = electronicStoreItemRepository.findItemById(idInt);
         Item item = new Item(itemEntity);
         return item;
     }
 
     public Item findItemByPathId(String id) {
         Integer idInt = Integer.parseInt(id);
-        ItemEntity itemEntity = electronicStoreRepository.findItemById(idInt);
+        ItemEntity itemEntity = electronicStoreItemRepository.findItemById(idInt);
         Item item = new Item(itemEntity);
         return item;
     }
 
     public List<Item> findItemsByIds(List<String> ids) {
 
-        List<ItemEntity> itemEntities = electronicStoreRepository.findAllItems();
+        List<ItemEntity> itemEntities = electronicStoreItemRepository.findAllItems();
 
         List<Item> itemsfounded = itemEntities.stream()
                 .map(Item::new)
@@ -60,7 +62,7 @@ public class ElectronicStoreItemService {
 
     public void deleteItem(String id) {
         Integer idInt = Integer.parseInt(id);
-        electronicStoreRepository.deleteItem(idInt);
+        electronicStoreItemRepository.deleteItem(idInt);
     }
 
     public Item updateItem(String id, ItemBody itemBody) {
@@ -68,7 +70,7 @@ public class ElectronicStoreItemService {
         ItemEntity itemEntity = new ItemEntity(idInt, itemBody.getName(), itemBody.getType(), itemBody.getPrice(),
                 itemBody.getSpec().getCpu(), itemBody.getSpec().getCapacity());
 
-        ItemEntity itemEntityUpdated = electronicStoreRepository.updateItemEntity(Integer.valueOf(id), itemEntity);
+        ItemEntity itemEntityUpdated = electronicStoreItemRepository.updateItemEntity(Integer.valueOf(id), itemEntity);
 
         Item itemUpdated = new Item(itemEntityUpdated);
 
@@ -89,7 +91,7 @@ public class ElectronicStoreItemService {
         Integer itemNums = buyOrder.getItemNums();
 
         //NOTE: 일단 아이템을 불러와야하니까 ItemEntity 불러옴
-        ItemEntity itemEntity = electronicStoreRepository.findItemById(itemId);
+        ItemEntity itemEntity = electronicStoreItemRepository.findItemById(itemId);
         if(itemEntity.getStoreId() == null) throw new RuntimeException ("매장을 찾을 수 없습니다");
         if(itemEntity.getStock() == null) throw new RuntimeException("상품의 재고가 없습니다");
 
@@ -101,7 +103,7 @@ public class ElectronicStoreItemService {
         Integer totalPrice = successBuyItemNums * itemEntity.getPrice();
 
         //빼는거 DB에 반영 Item 재고 감소
-        electronicStoreRepository.updateItemStock(itemId, itemEntity.getStock() - successBuyItemNums);
+        electronicStoreItemRepository.updateItemStock(itemId, itemEntity.getStock() - successBuyItemNums);
 
 
         StoreSales storeSales = storeSalesRepository.findStoreSalesById(itemEntity.getStoreId());

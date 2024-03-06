@@ -2,7 +2,7 @@ package com.github.supercoding.repository.items;
 
 import java.util.List;
 
-public interface ElectonicStoreItemRepository {
+public interface ElectronicStoreItemRepository {
 
 
     List<ItemEntity> findAllItems();

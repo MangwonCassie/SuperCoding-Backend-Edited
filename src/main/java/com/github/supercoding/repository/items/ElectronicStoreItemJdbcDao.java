@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ElectronicStoreItemJdbcDao implements ElectonicStoreItemRepository {
+public class ElectronicStoreItemJdbcDao implements ElectronicStoreItemRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
