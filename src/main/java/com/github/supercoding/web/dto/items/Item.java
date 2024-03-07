@@ -1,13 +1,15 @@
-package com.github.supercoding.web.dto;
+package com.github.supercoding.web.dto.items;
 
 import com.github.supercoding.repository.items.ItemEntity;
+import com.github.supercoding.web.dto.items.ItemBody;
+import com.github.supercoding.web.dto.items.Spec;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.Objects;
+import lombok.Setter;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class Item {
 
