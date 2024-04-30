@@ -11,6 +11,7 @@ import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
 import com.github.supercoding.service.exceptions.InValidValueException;
+import com.github.supercoding.service.exceptions.NotFoundException;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
@@ -52,7 +53,9 @@ public class AirReservationService {
         if(!ticketTypeSet.contains(ticketType))
             throw new InValidValueException("해당 TicketType" + ticketType + "은 지원하지않습니다." );
 
-        UserEntity userEntity = userRepository.findUserById(userId);
+
+        UserEntity userEntity = userRepository.findUserById(userId)
+                .orElseThrow(() -> new NotFoundException("해당 id: " + userId + " 유저를 찾을 수 없습니다."));
 
         String likePlace =  userEntity.getLikeTravelPlace();
 
