@@ -10,6 +10,7 @@ import com.github.supercoding.repository.reservations.Reservation;
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
+import com.github.supercoding.service.exceptions.InValidException;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
@@ -18,8 +19,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @Service
 public class AirReservationService {
@@ -43,6 +48,11 @@ public class AirReservationService {
         //1. 유저를 userId로 가져와서, 선호하는 여행지 도출
         //2. 선호하는 여행지와 ticketType으로 AirLineTicket Table 질의해서 필요한 AirLineTicket 들고오기
         //3. 이 둘의 정보를 조합해서 Ticket DTO를 만든다.
+
+        Set<String> ticketTypeSet = new HashSet<>(Arrays.asList("편도", "왕복"));
+
+        if(!ticketTypeSet.contains(ticketType))
+            throw new InValidException("해당 TicketType" + ticketType + "은 지원하지않습니다." );
 
         UserEntity userEntity = userRepository.findUserById(userId);
 
