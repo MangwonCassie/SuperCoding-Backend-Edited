@@ -1,6 +1,8 @@
 package com.github.supercoding.repository.passenger;
 
+import java.util.Optional;
+
 public interface PassengerRepository {
 
-    Passenger findPassengerByUserId(Integer userId);
+    Optional<Passenger> findPassengerByUserId(Integer userId);
 }

@@ -75,7 +75,8 @@ public class AirReservationService {
         Integer airlineTicketId = reservationRequest.getAirlineTicketId();
 
         //1. Passenger
-        Passenger passenger = passengerRepository.findPassengerByUserId(userId);
+        Passenger passenger = passengerRepository.findPassengerByUserId(userId)
+                .orElseThrow(() -> new NotFoundException("요청하신 userId" + userId + "에 해당하는 Passenger를 찾을 수 없습니다."));
         Integer passengerId = passenger.getPassengerId();
         
         //2. price 등 정보 가져오기

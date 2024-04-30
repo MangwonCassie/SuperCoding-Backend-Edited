@@ -23,11 +23,9 @@ public class AirReservationController {
 
     //NOTE: Controller 먼저 만든 후 Service를 필드로
 
-    private AirReservationService airReservationService;
+    private final AirReservationService airReservationService;
 
-    public AirReservationController(AirReservationService airReservationService) {
-        this.airReservationService = airReservationService;
-    }
+
 
     @GetMapping("/tickets")
     public ResponseEntity findAirlineTickets(@RequestParam("user-id") Integer userId,
