@@ -10,12 +10,10 @@ import com.github.supercoding.repository.reservations.Reservation;
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserRepository;
-import com.github.supercoding.service.exceptions.InValidException;
+import com.github.supercoding.service.exceptions.InValidValueException;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +50,7 @@ public class AirReservationService {
         Set<String> ticketTypeSet = new HashSet<>(Arrays.asList("편도", "왕복"));
 
         if(!ticketTypeSet.contains(ticketType))
-            throw new InValidException("해당 TicketType" + ticketType + "은 지원하지않습니다." );
+            throw new InValidValueException("해당 TicketType" + ticketType + "은 지원하지않습니다." );
 
         UserEntity userEntity = userRepository.findUserById(userId);
 
