@@ -22,6 +22,7 @@ import java.util.Map;
 )
 public class JpaConfig1 {
 
+    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean1 (@Qualifier("dataSource1")DataSource dataSource){
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
