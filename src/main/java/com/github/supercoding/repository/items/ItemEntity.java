@@ -1,5 +1,6 @@
 package com.github.supercoding.repository.items;
 
+import com.github.supercoding.repository.storeSales.StoreSales;
 import com.github.supercoding.web.dto.items.ItemBody;
 import lombok.*;
 
@@ -27,11 +28,15 @@ public class ItemEntity {
 
     @Column(name = "type", length = 20, nullable = false)
     private String type;
+
     @Column(name ="price")
     private Integer price;
 
-    @Column(name = "store_id")
-    private Integer storeId;
+    @ManyToOne
+    @JoinColumn(name="store_id")
+//    @Column(name = "store_id")
+//    private Integer storeId;
+    private StoreSales storeSales;
 
     @Column(name = "stock", columnDefinition = "DEFAULT 0 CHECK(stock) >= 0")
     private Integer stock;
