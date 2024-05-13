@@ -81,7 +81,8 @@ public class ElectronicStoreItemService {
 
     public void deleteItem(String id) {
         Integer idInt = Integer.parseInt(id);
-        electronicStoreItemRepository.deleteItem(idInt);
+//        electronicStoreItemRepository.deleteItem(idInt);
+        electronicStoreItemJpaRepository.deleteById(idInt);
     }
 
     public Item updateItem(String id, ItemBody itemBody) {
