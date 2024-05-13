@@ -6,6 +6,8 @@ import com.github.supercoding.repository.items.ItemEntity;
 import com.github.supercoding.repository.storeSales.StoreSales;
 import com.github.supercoding.repository.storeSales.StoreSalesJpaRepository;
 import com.github.supercoding.repository.storeSales.StoreSalesRepository;
+import com.github.supercoding.service.exceptions.NotAcceptException;
+import com.github.supercoding.service.mapper.ItemMapper;
 import com.github.supercoding.web.dto.items.BuyOrder;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.Item;
@@ -38,9 +40,16 @@ public class ElectronicStoreItemService {
 
 
     public Integer saveItem(ItemBody itemBody) {
-        ItemEntity itemEntity = new ItemEntity(null, itemBody.getName(), itemBody.getType(),
-                itemBody.getPrice(), itemBody.getSpec().getCpu(), itemBody.getSpec().getCapacity());
-        return electronicStoreItemRepository.saveItem(itemEntity);
+
+        ItemEntity itemEntity = ItemMapper.INSTANCE.idAndItemBodyToItemEntity(null, itemBody);
+        ItemEntity itemEntityCreated;
+
+        try {
+            itemEntityCreated = electronicStoreItemJpaRepository.save(itemEntity);
+        } catch(RuntimeException exception) {
+            throw new NotAcceptException("Item을 저장하는 도중에 Error 가 발생하였습니다.");
+        }
+        return itemEntityCreated.getId();
     }
 
     public Item findItemById(String id) {

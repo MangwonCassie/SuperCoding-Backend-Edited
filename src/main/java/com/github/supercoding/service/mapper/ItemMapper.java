@@ -3,6 +3,7 @@ package com.github.supercoding.service.mapper;
 import com.github.supercoding.repository.items.ItemEntity;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.Item;
+import com.github.supercoding.web.dto.items.ItemBody;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -14,7 +15,16 @@ public interface ItemMapper {
 
     // 메소드 정의 부분 (Item 클래스 생성자 보면서 참고하면서 ItemEntity가 들어와서 Item만드는 거니까)
 
+    // 메소드
+    @Mapping(target = "spec.cpu", source = "cpu")
+    @Mapping(target = "spec.capacity", source = "capacity")
     Item itemEntityToItem(ItemEntity itemEntity);
+
+    @Mapping(target = "cpu", source = "itemBody.spec.cpu")
+    @Mapping(target = "capacity", source = "itemBody.spec.capacity")
+    @Mapping(target = "storeId", ignore = true)
+    @Mapping(target = "stock", expression = "java(0)")
+    ItemEntity idAndItemBodyToItemEntity(Integer id, ItemBody itemBody);
 
 
 }
