@@ -18,7 +18,7 @@ import java.util.Map;
 @EnableJpaRepositories (
         basePackages = {"com.github.supercoding.repository.items", "com.github.supercoding.repository.storeSales"},
         entityManagerFactoryRef = "entityManagerFactoryBean1",
-        transactionManagerRef = "transactionManager"
+        transactionManagerRef = "tmJpa1"
 )
 public class JpaConfig1 {
 
@@ -46,4 +46,6 @@ public class JpaConfig1 {
         transactionManager.setEntityManagerFactory(entityManagerFactoryBean1(dataSource).getObject());
         return transactionManager;
     }
+
+
 }
