@@ -26,7 +26,7 @@ public class JpaConfig1 {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean1 (@Qualifier("dataSource1")DataSource dataSource){
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.github.supercodingspring.repository.items", "com.github.supercodingspring.repository.storeSales");
+        em.setPackagesToScan("com.github.supercoding.repository.items", "com.github.supercoding.repository.storeSales");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

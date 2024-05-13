@@ -1,14 +1,17 @@
 package com.github.supercoding.service;
 
+import com.github.supercoding.repository.items.ElectronicStoreItemJpaRepository;
 import com.github.supercoding.repository.items.ElectronicStoreItemRepository;
 import com.github.supercoding.repository.items.ItemEntity;
 import com.github.supercoding.repository.storeSales.StoreSales;
+import com.github.supercoding.repository.storeSales.StoreSalesJpaRepository;
 import com.github.supercoding.repository.storeSales.StoreSalesRepository;
 import com.github.supercoding.web.dto.items.BuyOrder;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.ItemBody;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,15 +20,19 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ElectronicStoreItemService {
 
-
     private final ElectronicStoreItemRepository electronicStoreItemRepository;
+
+    private final ElectronicStoreItemJpaRepository electronicStoreItemJpaRepository;
+
     private final StoreSalesRepository storeSalesRepository;
 
+    private final StoreSalesJpaRepository storeSalesJpaRepository;
 
     public List<Item> findAllItem() {
-        List<ItemEntity> itemEntities =  electronicStoreItemRepository.findAllItems();
+        List<ItemEntity> itemEntities =  electronicStoreItemJpaRepository.findAll();
         return itemEntities.stream().map(Item::new).collect(Collectors.toList());
     }
 
