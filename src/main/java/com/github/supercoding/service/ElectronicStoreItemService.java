@@ -7,6 +7,7 @@ import com.github.supercoding.repository.storeSales.StoreSales;
 import com.github.supercoding.repository.storeSales.StoreSalesJpaRepository;
 import com.github.supercoding.repository.storeSales.StoreSalesRepository;
 import com.github.supercoding.service.exceptions.NotAcceptException;
+import com.github.supercoding.service.exceptions.NotFoundException;
 import com.github.supercoding.service.mapper.ItemMapper;
 import com.github.supercoding.web.dto.items.BuyOrder;
 import com.github.supercoding.web.dto.items.Item;
@@ -54,7 +55,8 @@ public class ElectronicStoreItemService {
 
     public Item findItemById(String id) {
         Integer idInt = Integer.parseInt(id);
-        ItemEntity itemEntity = electronicStoreItemRepository.findItemById(idInt);
+        ItemEntity itemEntity = electronicStoreItemJpaRepository.findById(idInt)
+                .orElseThrow(() -> new NotFoundException("해당 ID: " + idInt + "의 Item을 찾을 수 없습니다."));
         Item item = new Item(itemEntity);
         return item;
     }
