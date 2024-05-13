@@ -134,7 +134,9 @@ public class ElectronicStoreItemService {
         StoreSales storeSales = storeSalesJpaRepository.findById(itemEntity.getStoreId())
                 .orElseThrow(()-> new NotFoundException("요청하신 StoreId : " + itemEntity.getStoreId() + "에 해당하는 StoreSale 없습니다."));
         //매장 매상 추가 - > 매장 레포지토리가 필요하다. (레포지토리 입장에서는 update니까)
-        storeSalesRepository.updateSalesAmount(itemEntity.getStoreId(), storeSales.getAmount() + totalPrice );
+
+        storeSales.setAmount(storeSales.getAmount() + totalPrice);
+//        storeSalesRepository.updateSalesAmount(itemEntity.getStoreId(), storeSales.getAmount() + totalPrice );
         return successBuyItemNums;
 
     }
