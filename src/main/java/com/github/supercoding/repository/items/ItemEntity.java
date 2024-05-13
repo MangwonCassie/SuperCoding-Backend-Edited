@@ -1,5 +1,6 @@
 package com.github.supercoding.repository.items;
 
+import com.github.supercoding.web.dto.items.ItemBody;
 import lombok.*;
 
 import javax.persistence.*;
@@ -53,4 +54,11 @@ public class ItemEntity {
     }
 
 
+    public void setItemBody(ItemBody itemBody) {
+        this.name = itemBody.getName();
+        this.type = itemBody.getType();
+        this.price = itemBody.getPrice();
+        this.cpu = itemBody.getSpec().getCpu();
+        this.capacity = itemBody.getSpec().getCapacity();
+    }
 }

@@ -82,19 +82,23 @@ public class ElectronicStoreItemService {
     public void deleteItem(String id) {
         Integer idInt = Integer.parseInt(id);
 //        electronicStoreItemRepository.deleteItem(idInt);
+
         electronicStoreItemJpaRepository.deleteById(idInt);
     }
 
+    @Transactional(transactionManager = "tmJpa1")
     public Item updateItem(String id, ItemBody itemBody) {
         Integer idInt = Integer.valueOf(id);
-        ItemEntity itemEntity = new ItemEntity(idInt, itemBody.getName(), itemBody.getType(), itemBody.getPrice(),
-                itemBody.getSpec().getCpu(), itemBody.getSpec().getCapacity());
+        ItemEntity itemEntityUpdated = electronicStoreItemJpaRepository.findById(idInt)
+                .orElseThrow(() -> new NotFoundException("아무 Items 들을 찾을 수 없습니다."));
 
-        ItemEntity itemEntityUpdated = electronicStoreItemRepository.updateItemEntity(Integer.valueOf(id), itemEntity);
+        itemEntityUpdated.setItemBody(itemBody); //자체 정의
 
-        Item itemUpdated = new Item(itemEntityUpdated);
+//        ItemEntity itemEntityUpdated = electronicStoreItemRepository.updateItemEntity(Integer.valueOf(id), itemEntity);
+//
+//        Item itemUpdated = new Item(itemEntityUpdated);
 
-        return itemUpdated;
+        return ItemMapper.INSTANCE.itemEntityToItem(itemEntityUpdated);
     }
 
 
