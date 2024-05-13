@@ -1094,3 +1094,27 @@ org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named '
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:840)
 2024-05-13 18:14:10.458 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-13 18:14:25.261 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Starting SuperCodingApplication using Java 17.0.9 on DESKTOP-52MHGT8 with PID 17940 (D:\personal\super-coding-javas-main\Spring\super-coding\build\classes\java\main started by user in D:\personal\super-coding-javas-main\Spring\super-coding)
+2024-05-13 18:14:25.266 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - The following 1 profile is active: "dev"
+2024-05-13 18:14:26.064 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-05-13 18:14:26.064 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-13 18:14:26.124 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 50 ms. Found 2 JPA repository interfaces.
+2024-05-13 18:14:27.127 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port(s): 9090 (http)
+2024-05-13 18:14:27.144 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-9090"]
+2024-05-13 18:14:27.146 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2024-05-13 18:14:27.147 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2024-05-13 18:14:27.347 [main] [34mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2024-05-13 18:14:27.347 [main] [34mINFO [0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 2014 ms
+2024-05-13 18:14:27.619 [main] [34mINFO [0;39m [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-13 18:14:27.731 [main] [34mINFO [0;39m [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-05-13 18:14:28.072 [main] [34mINFO [0;39m [36mo.h.annotations.common.Version[0;39m - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-05-13 18:14:28.965 [main] [34mINFO [0;39m [36morg.hibernate.dialect.Dialect[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-05-13 18:14:29.953 [main] [34mINFO [0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-13 18:14:29.970 [main] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-13 18:14:31.054 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-9090"]
+2024-05-13 18:14:31.094 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port(s): 9090 (http) with context path ''
+2024-05-13 18:14:31.118 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Started SuperCodingApplication in 6.443 seconds (JVM running for 7.659)
+2024-05-13 18:14:54.480 [http-nio-9090-exec-1] [34mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-13 18:14:54.481 [http-nio-9090-exec-1] [34mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+2024-05-13 18:14:54.482 [http-nio-9090-exec-1] [34mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 1 ms
+2024-05-13 19:28:36.734 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'

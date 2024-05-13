@@ -115,7 +115,8 @@ public class ElectronicStoreItemService {
         Integer itemNums = buyOrder.getItemNums();
 
         //NOTE: 일단 아이템을 불러와야하니까 ItemEntity 불러옴
-        ItemEntity itemEntity = electronicStoreItemRepository.findItemById(itemId);
+        ItemEntity itemEntity = electronicStoreItemJpaRepository.findById(itemId)
+                .orElseThrow(()->new NotFoundException("해당 이름의 Item을 찾을 수 없습니다."));
         if(itemEntity.getStoreId() == null) throw new RuntimeException ("매장을 찾을 수 없습니다");
         if(itemEntity.getStock() == null) throw new RuntimeException("상품의 재고가 없습니다");
 
@@ -130,7 +131,8 @@ public class ElectronicStoreItemService {
         electronicStoreItemRepository.updateItemStock(itemId, itemEntity.getStock() - successBuyItemNums);
 
 
-        StoreSales storeSales = storeSalesRepository.findStoreSalesById(itemEntity.getStoreId());
+        StoreSales storeSales = storeSalesJpaRepository.findById(itemEntity.getStoreId())
+                .orElseThrow(()-> new NotFoundException("요청하신 StoreId : " + itemEntity.getStoreId() + "에 해당하는 StoreSale 없습니다."));
         //매장 매상 추가 - > 매장 레포지토리가 필요하다. (레포지토리 입장에서는 update니까)
         storeSalesRepository.updateSalesAmount(itemEntity.getStoreId(), storeSales.getAmount() + totalPrice );
         return successBuyItemNums;
