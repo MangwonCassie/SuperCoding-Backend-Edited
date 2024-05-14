@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Getter
@@ -32,10 +33,14 @@ public class ItemEntity {
     @Column(name ="price")
     private Integer price;
 
-    @ManyToOne
-    @JoinColumn(name="store_id")
+//    @ManyToOne
+//    @JoinColumn(name="store_id")
 //    @Column(name = "store_id")
 //    private Integer storeId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id", nullable = true)
     private StoreSales storeSales;
 
     @Column(name = "stock", columnDefinition = "DEFAULT 0 CHECK(stock) >= 0")
@@ -52,12 +57,15 @@ public class ItemEntity {
         this.name = name;
         this.type = type;
         this.price = price;
-        this.storeId = null;
+        this.storeSales = null;
         this.stock = 0;
         this.cpu = cpu;
         this.capacity = capacity;
     }
 
+    public Optional<StoreSales> getStoreSales() {
+        return Optional.ofNullable(storeSales);
+    }
 
     public void setItemBody(ItemBody itemBody) {
         this.name = itemBody.getName();
