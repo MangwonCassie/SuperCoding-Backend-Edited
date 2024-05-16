@@ -3,6 +3,7 @@ package com.github.supercoding.service;
 import com.github.supercoding.repository.airlineTicket.AirLineTicketRepository;
 import com.github.supercoding.repository.airlineTicket.AirlineTicket;
 import com.github.supercoding.repository.airlineTicket.AirlineTicketAndFlightInfo;
+import com.github.supercoding.repository.airlineTicket.AirlineTicketJpaRepository;
 import com.github.supercoding.repository.passenger.Passenger;
 import com.github.supercoding.repository.passenger.PassengerRepository;
 import com.github.supercoding.repository.reservations.Reservation;
@@ -15,6 +16,7 @@ import com.github.supercoding.service.exceptions.NotFoundException;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 
 
 @Service
+@RequiredArgsConstructor
 public class AirReservationService {
 
     private UserRepository userRepository;
@@ -35,12 +38,8 @@ public class AirReservationService {
 
     private ReservationRepository reservationRepository;
 
-    public AirReservationService(UserRepository userRepository, AirLineTicketRepository airLineTicketRepository, PassengerRepository passengerRepository, ReservationRepository reservationRepository) {
-        this.userRepository = userRepository;
-        this.airLineTicketRepository = airLineTicketRepository;
-        this.passengerRepository = passengerRepository;
-        this.reservationRepository = reservationRepository;
-    }
+    private final AirlineTicketJpaRepository airlineTicketJpaRepository;
+
 
     public List<Ticket> findUserFavoritePlaceTickets(Integer userId, String ticketType) {
         //필요한 Repository: UserRepository, airLineTicket Repository
@@ -59,8 +58,13 @@ public class AirReservationService {
 
         String likePlace =  userEntity.getLikeTravelPlace();
 
-        List<AirlineTicket> airlineTickets = airLineTicketRepository.findAllAirlineTicketsWithPlaceAndTicketType(likePlace, ticketType);
+//        List<AirlineTicket> airlineTickets = airLineTicketRepository.findAllAirlineTicketsWithPlaceAndTicketType(likePlace, ticketType);
 
+        List<AirlineTicket> airlineTickets
+                = airlineTicketJpaRepository.findAirlineTicketsByArrivalLocationAndTicketType(likePlace, ticketType);
+
+        if (airlineTickets.isEmpty())
+            throw new NotFoundException("해당 likePlace: " + likePlace + " 와 TicketType: " + ticketType + "에 해당하는 항공권 찾을 수 없습니다.");
        List<Ticket> tickets = airlineTickets.stream().map(Ticket:: new).collect(Collectors.toList());
         return tickets;
     }
