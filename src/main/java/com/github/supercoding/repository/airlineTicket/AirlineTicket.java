@@ -1,8 +1,11 @@
 package com.github.supercoding.repository.airlineTicket;
 
+import lombok.Builder;
+
 import java.time.LocalDateTime;
 import java.sql.Date;
 
+@Builder
 public class AirlineTicket {
     private Integer ticketId;
     private String ticketType;

@@ -1,5 +1,11 @@
 package com.github.supercoding.repository.users;
 
+import lombok.Builder;
+
+import javax.persistence.Entity;
+
+@Builder
+@Entity
 public class UserEntity {
 
     private Integer userId;
