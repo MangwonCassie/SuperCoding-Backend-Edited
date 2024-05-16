@@ -33,13 +33,13 @@ public class AirReservationController {
     try {
         List<Ticket> tickets = airReservationService.findUserFavoritePlaceTickets(userId, ticketType);
         TicketResponse ticketResponse = new TicketResponse(tickets);
-        return new ResponseEntity(ticketResponse, HttpStatus.OK);
+        return new ResponseEntity<>(ticketResponse, HttpStatus.OK);
     } catch (InValidValueException ive) {
         log.error("Client 요청에 문제가 있어 다음처럼 출력합니다." + ive.getMessage()); // 우리 쪽 위한거
-        return new ResponseEntity(ive.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ive.getMessage(), HttpStatus.BAD_REQUEST);
     } catch (NotFoundException nfe){
         log.error("Client 요청에 문제가 있어 다음처럼 출력합니다." + nfe.getMessage());
-        return new ResponseEntity(nfe.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(nfe.getMessage(), HttpStatus.NOT_FOUND);
     }
     }
 
