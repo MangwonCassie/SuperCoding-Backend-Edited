@@ -10,9 +10,11 @@ import com.github.supercoding.repository.reservations.Reservation;
 
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
+import com.github.supercoding.repository.users.UserJpaRepository;
 import com.github.supercoding.repository.users.UserRepository;
 import com.github.supercoding.service.exceptions.InValidValueException;
 import com.github.supercoding.service.exceptions.NotFoundException;
+import com.github.supercoding.service.mapper.TicketMapper;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
 import com.github.supercoding.web.dto.airline.ReservationResult;
 import com.github.supercoding.web.dto.airline.Ticket;
@@ -31,12 +33,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AirReservationService {
 
-    private UserRepository userRepository;
-    private AirLineTicketRepository airLineTicketRepository;
+    private final UserRepository userRepository;
 
-    private PassengerRepository passengerRepository;
+    private final UserJpaRepository userJpaRepository;
+    private final AirLineTicketRepository airLineTicketRepository;
 
-    private ReservationRepository reservationRepository;
+    private final PassengerRepository passengerRepository;
+
+    private final ReservationRepository reservationRepository;
 
     private final AirlineTicketJpaRepository airlineTicketJpaRepository;
 
@@ -53,7 +57,7 @@ public class AirReservationService {
             throw new InValidValueException("해당 TicketType" + ticketType + "은 지원하지않습니다." );
 
 
-        UserEntity userEntity = userRepository.findUserById(userId)
+        UserEntity userEntity = userJpaRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("해당 id: " + userId + " 유저를 찾을 수 없습니다."));
 
         String likePlace =  userEntity.getLikeTravelPlace();
@@ -65,7 +69,7 @@ public class AirReservationService {
 
         if (airlineTickets.isEmpty())
             throw new NotFoundException("해당 likePlace: " + likePlace + " 와 TicketType: " + ticketType + "에 해당하는 항공권 찾을 수 없습니다.");
-       List<Ticket> tickets = airlineTickets.stream().map(Ticket:: new).collect(Collectors.toList());
+       List<Ticket> tickets = airlineTickets.stream().map(TicketMapper.INSTANCE::airlineTicketToTicket).collect(Collectors.toList());
         return tickets;
     }
 

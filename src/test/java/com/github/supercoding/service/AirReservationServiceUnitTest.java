@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +50,8 @@ class AirReservationServiceUnitTest {
         Integer userId = 5;
         String likePlace = "파리";
         String ticketType = "왕복";
+
+
         UserEntity userEntity = UserEntity.builder()
                 .userId(userId)
                 .likeTravelPlace(likePlace)

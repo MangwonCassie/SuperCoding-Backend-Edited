@@ -13,12 +13,18 @@ public class UserEntity {
     private String likeTravelPlace;
     private String phoneNum;
 
+    public UserEntity() {
+
+    }
+
     public UserEntity(Integer userId, String userName, String likeTravelPlace, String phoneNum) {
         this.userId = userId;
         this.userName = userName;
         this.likeTravelPlace = likeTravelPlace;
         this.phoneNum = phoneNum;
     }
+
+
 
     public Integer getUserId() {
         return userId;

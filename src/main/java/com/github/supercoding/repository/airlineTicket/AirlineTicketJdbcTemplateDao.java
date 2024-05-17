@@ -21,8 +21,8 @@ public class AirlineTicketJdbcTemplateDao implements AirLineTicketRepository {
                     rs.getString("ticket_type"),
                     rs.getNString("departure_loc"),
                     rs.getNString("arrival_loc"),
-                    rs.getDate("departure_at"),
-                    rs.getDate("return_at"),
+                    rs.getDate("departure_at").toLocalDate().atStartOfDay(),
+                    rs.getDate("return_at").toLocalDate().atStartOfDay(),
                     rs.getDouble("tax"),
                     rs.getDouble("total_price")
             )
