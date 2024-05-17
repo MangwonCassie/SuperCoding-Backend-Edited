@@ -1,41 +1,19 @@
 package com.github.supercoding.repository.passenger;
 
+import lombok.*;
+
 import java.util.Objects;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = "passengerId")
+@Builder
 public class Passenger {
     private Integer passengerId;
     private Integer userId;
     private String passportNum;
-
-    public Passenger(Integer passengerId, Integer userId, String passportNum) {
-        this.passengerId = passengerId;
-        this.userId = userId;
-        this.passportNum = passportNum;
-    }
-
-    public Integer getPassengerId() {
-        return passengerId;
-    }
-
-    public void setPassengerId(Integer passengerId) {
-        this.passengerId = passengerId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getPassportNum() {
-        return passportNum;
-    }
-
-    public void setPassportNum(String passportNum) {
-        this.passportNum = passportNum;
-    }
 
 
     @Override
