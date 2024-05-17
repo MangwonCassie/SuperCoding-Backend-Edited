@@ -24,6 +24,9 @@ public class UserEntity {
     @Column(name = "phone_num", length = 30)
     private String phoneNum;
 
+    @OneToOne(mappedBy = "user")
+    private Passenger passenger;
+
 
 
     public UserEntity() {
