@@ -2,9 +2,11 @@ package com.github.supercoding.repository.users;
 
 import com.github.supercoding.repository.passenger.Passenger;
 import lombok.*;
-import org.hibernate.annotations.Table;
+import org.hibernate.Hibernate;
+
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -12,10 +14,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "users")
 public class UserEntity {
 
-    @Id
-    @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @Column(name = "user_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "user_name", length = 20)
@@ -36,14 +38,13 @@ public class UserEntity {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof UserEntity)) {
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
             return false;
         }
-
         UserEntity that = (UserEntity) o;
-
-        return userId.equals(that.userId);
+        return userId != null && Objects.equals(userId, that.userId);
     }
+
 
     @Override
     public int hashCode() {

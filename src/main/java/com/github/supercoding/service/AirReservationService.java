@@ -40,11 +40,7 @@ public class AirReservationService {
 
     private final UserJpaRepository userJpaRepository;
 
-    private final AirLineTicketRepository airLineTicketRepository;
-
     private final PassengerJpaRepository passengerJpaRepository;
-
-    private final ReservationRepository reservationRepository;
 
     private final AirlineTicketJpaRepository airlineTicketJpaRepository;
 
