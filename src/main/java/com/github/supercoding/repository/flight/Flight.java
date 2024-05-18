@@ -25,7 +25,8 @@ public class Flight {
 
    // 즉, 하나의 항공권(AirlineTicket)은 여러 개의 항공편(Flight)을 가질 수 있음.
    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "ticket_id")
+//    @Column(name = "ticket_id")
+   @JoinColumn(name = "ticket_id", nullable = true)
 //    private Integer ticket;
    private AirlineTicket airlineTicket;
 
