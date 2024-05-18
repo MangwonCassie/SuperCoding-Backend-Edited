@@ -1,18 +1,21 @@
 package com.github.supercoding.service;
 
+import com.github.supercoding.repository.flight.Flight;
 import com.github.supercoding.repository.airlineTicket.AirLineTicketRepository;
 import com.github.supercoding.repository.airlineTicket.AirlineTicket;
 import com.github.supercoding.repository.airlineTicket.AirlineTicketAndFlightInfo;
 import com.github.supercoding.repository.airlineTicket.AirlineTicketJpaRepository;
 import com.github.supercoding.repository.passenger.Passenger;
-import com.github.supercoding.repository.passenger.PassengerRepository;
+import com.github.supercoding.repository.passenger.PassengerJpaRepository;
 import com.github.supercoding.repository.reservations.Reservation;
 
+import com.github.supercoding.repository.reservations.ReservationJpaRepository;
 import com.github.supercoding.repository.reservations.ReservationRepository;
 import com.github.supercoding.repository.users.UserEntity;
 import com.github.supercoding.repository.users.UserJpaRepository;
 import com.github.supercoding.repository.users.UserRepository;
 import com.github.supercoding.service.exceptions.InValidValueException;
+import com.github.supercoding.service.exceptions.NotAcceptException;
 import com.github.supercoding.service.exceptions.NotFoundException;
 import com.github.supercoding.service.mapper.TicketMapper;
 import com.github.supercoding.web.dto.airline.ReservationRequest;
@@ -39,11 +42,13 @@ public class AirReservationService {
 
     private final AirLineTicketRepository airLineTicketRepository;
 
-    private final PassengerRepository passengerRepository;
+    private final PassengerJpaRepository passengerJpaRepository;
 
     private final ReservationRepository reservationRepository;
 
     private final AirlineTicketJpaRepository airlineTicketJpaRepository;
+
+    private final ReservationJpaRepository reservationJpaRepository;
 
 
     public List<Ticket> findUserFavoritePlaceTickets(Integer userId, String ticketType) {
@@ -75,7 +80,7 @@ public class AirReservationService {
     }
 
 
-    @Transactional(transactionManager = "tm2")
+    @Transactional(transactionManager = "tmJpa2")
     public ReservationResult makeReservation(ReservationRequest reservationRequest) {
         //NOTE: 1. Reservation Repository, Join Table (flight/airline_ticket), userId가져올 때 User테이블 아닌 passenger 테이블에서 가져옴
 
@@ -83,25 +88,37 @@ public class AirReservationService {
         Integer userId = reservationRequest.getUserId();
         Integer airlineTicketId = reservationRequest.getAirlineTicketId();
 
+        AirlineTicket airlineTicket = airlineTicketJpaRepository.findById(airlineTicketId).orElseThrow(() -> new NotFoundException("airLineTicket 찾을 수 없습니다."));
+
         //1. Passenger
-        Passenger passenger = passengerRepository.findPassengerByUserId(userId)
-                .orElseThrow(() -> new NotFoundException("요청하신 userId" + userId + "에 해당하는 Passenger를 찾을 수 없습니다."));
-        Integer passengerId = passenger.getPassengerId();
-        
+        Passenger passenger = passengerJpaRepository.findPassengerByUserId(userId)
+                .orElseThrow(() -> new NotFoundException("요청하신 userId " + userId + "에 해당하는 Passenger를 찾을 수 없습니다."));
+
         //2. price 등 정보 가져오기
-        
-       List<AirlineTicketAndFlightInfo> airlineTicketAndFlightInfo = airLineTicketRepository.
-               findAllAirlineTicketAndFlightInfo(airlineTicketId); //조인해서 불러올 예정
+
+        List<Flight> flightList = airlineTicket.getFlightList();
+
+        if (flightList.isEmpty())
+            throw new NotFoundException("AirlineTicket Id " + airlineTicketId + " 에 해당하는 항공편과 항공권 찾을 수 없습니다.");
+
+        Boolean isSuccess = false;
+
         //3. reservation 생성
-        Reservation reservation = new Reservation(passengerId, airlineTicketId);
-        Boolean isSuccess = reservationRepository.saveReservation(reservation);
+        Reservation reservation = new Reservation(passenger, airlineTicket);
+
+        try {
+            reservationJpaRepository.save(reservation);
+            isSuccess = true;
+        } catch (RuntimeException e){
+            throw new NotAcceptException("Reservation이 등록되는 과정이 거부되었습니다.");
+        }
         
         //4. TODO: Reservation DTO 만들기
 
-        List<Integer> prices = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getPrice).collect(Collectors.toList());
-        List<Integer> charges = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getCharge).collect(Collectors.toList());
-        Integer tax = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getTax).findFirst().get();
-        Integer totalPrice = airlineTicketAndFlightInfo.stream().map(AirlineTicketAndFlightInfo::getTotalPrice).findFirst().get();
+        List<Integer> prices = flightList.stream().map(Flight::getFlightPrice).map(Double::intValue).collect(Collectors.toList());
+        List<Integer> charges = flightList.stream().map(Flight::getFlightPrice).map(Double::intValue).collect(Collectors.toList());
+        Integer tax = airlineTicket.getTax().intValue();
+        Integer totalPrice =  airlineTicket.getTotalPrice().intValue();
 
         return new ReservationResult(prices, charges, tax, totalPrice, isSuccess);
     }
