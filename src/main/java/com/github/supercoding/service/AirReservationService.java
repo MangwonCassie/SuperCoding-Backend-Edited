@@ -87,7 +87,7 @@ public class AirReservationService {
         AirlineTicket airlineTicket = airlineTicketJpaRepository.findById(airlineTicketId).orElseThrow(() -> new NotFoundException("airLineTicket 찾을 수 없습니다."));
 
         //1. Passenger
-        Passenger passenger = passengerJpaRepository.findPassengerByUserId(userId)
+        Passenger passenger = passengerJpaRepository.findPassengerByUserUserId(userId)
                 .orElseThrow(() -> new NotFoundException("요청하신 userId " + userId + "에 해당하는 Passenger를 찾을 수 없습니다."));
 
         //2. price 등 정보 가져오기
