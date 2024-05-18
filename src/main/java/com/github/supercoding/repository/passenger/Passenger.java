@@ -20,7 +20,7 @@ public class Passenger {
 
     //이게 문제
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", unique = true, nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", unique = true, nullable = false)
     private UserEntity user;
 
     @Column(name = "passport_num", length = 50)
