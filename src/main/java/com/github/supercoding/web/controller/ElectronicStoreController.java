@@ -5,6 +5,7 @@ import com.github.supercoding.service.ElectronicStoreItemService;
 import com.github.supercoding.web.dto.items.BuyOrder;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.ItemBody;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,44 +27,52 @@ public class ElectronicStoreController {
     ));
 
 
-
+    @ApiOperation("모든 Items 을 검색")
     @GetMapping("/items")
     public List<Item> findAllItem (){
         return electronicStoreItemService.findAllItem();
     }
 
+    @ApiOperation("Item 등록")
     @PostMapping("/items")
     public String registerItem(@RequestBody ItemBody itemBody){
         Integer itemId = electronicStoreItemService.saveItem(itemBody);
         return "ID: " + itemId;
     }
 
+    @ApiOperation("Item id로 검색")
     @GetMapping("/items/{id}")
     public Item findItemByPathId(@PathVariable String id ){
         return electronicStoreItemService.findItemByPathId(id);
     }
 
+    @ApiOperation("Item id로 검색")
     @GetMapping("/items-query")
     public Item findItemByQueryId(@RequestParam("id") String id ){
         return electronicStoreItemService.findItemById(id);
     }
 
+
+    @ApiOperation("Item ids로 검색")
     @GetMapping("/items-queries")
     public List<Item> findItemByQueryId(@RequestParam("id") List<String> ids ){
         return electronicStoreItemService.findItemsByIds(ids);
     }
 
+    @ApiOperation("Item id로 삭제")
     @DeleteMapping("/items/{id}")
     public String deleteItemByPathId(@PathVariable String id){
         electronicStoreItemService.deleteItem(id);
         return "Object with id =" + id + "has been deleted";
     }
 
+    @ApiOperation("Item id로 수정")
     @PutMapping("/items/{id}")
     public Item updateItem (@PathVariable String id, @RequestBody ItemBody itemBody) {
         return electronicStoreItemService.updateItem(id, itemBody);
     };
 
+    @ApiOperation("Item 구매")
     //NOTE: storeSales 테이블 추가 후  http://localhost:8080/v3/api/items/buy
     @PostMapping("/items/buy")
     public String buyItem(@RequestBody BuyOrder buyOrder){
