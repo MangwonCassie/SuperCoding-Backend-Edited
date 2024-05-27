@@ -6,6 +6,7 @@ import com.github.supercoding.web.dto.items.BuyOrder;
 import com.github.supercoding.web.dto.items.Item;
 import com.github.supercoding.web.dto.items.ItemBody;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,9 @@ public class ElectronicStoreController {
 
     @ApiOperation("Item id로 검색")
     @GetMapping("/items/{id}")
-    public Item findItemByPathId(@PathVariable String id ){
+    public Item findItemByPathId(
+            @ApiParam(name="id", value="item Id", example = "1")
+            @PathVariable String id ){
         return electronicStoreItemService.findItemByPathId(id);
     }
 
@@ -55,7 +58,9 @@ public class ElectronicStoreController {
 
     @ApiOperation("Item ids로 검색")
     @GetMapping("/items-queries")
-    public List<Item> findItemByQueryId(@RequestParam("id") List<String> ids ){
+    public List<Item> findItemByQueryId(
+            @ApiParam(name="ids", value="item Ids", example = "[1,2,3]")
+            @RequestParam("id") List<String> ids ){
         return electronicStoreItemService.findItemsByIds(ids);
     }
 
