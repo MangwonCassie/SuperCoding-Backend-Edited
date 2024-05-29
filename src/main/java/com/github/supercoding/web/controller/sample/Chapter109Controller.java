@@ -1,0 +1,31 @@
+package com.github.supercoding.web.controller.sample;
+
+import com.github.supercoding.service.ElectronicStoreItemService;
+import com.github.supercoding.web.dto.items.Item;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/sample")
+@RequiredArgsConstructor
+@Slf4j
+public class Chapter109Controller {
+    private final ElectronicStoreItemService electronicStoreItemService;
+
+    @ApiOperation("가성비 싼 거부터 검색")
+    @GetMapping("/items-prices")
+    public List<Item> findItemsByPricing(@RequestParam("max") Integer maxPrice){
+//        log.info("GET /items-prices 요청이 들어왔습니다.");
+        List<Item> items = electronicStoreItemService.findItemsOrderByPrices(maxPrice);
+//        log.info("GET /items-prices 응답: " + items);
+        return items;
+    }
+}
+

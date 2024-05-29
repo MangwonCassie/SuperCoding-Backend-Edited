@@ -141,4 +141,9 @@ public class ElectronicStoreItemService {
         return successBuyItemNums;
 
     }
+
+    public List<Item> findItemsOrderByPrices(Integer maxValue) {
+        List<ItemEntity> itemEntities = electronicStoreItemJpaRepository.findItemEntitiesByPriceLessThanEqualOrderByPriceAsc(maxValue);
+        return itemEntities.stream().map(ItemMapper.INSTANCE::itemEntityToItem).collect(Collectors.toList());
+    }
 }

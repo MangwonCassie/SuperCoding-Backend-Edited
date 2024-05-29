@@ -8,6 +8,7 @@ import com.github.supercoding.web.dto.items.ItemBody;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@Slf4j
 public class ElectronicStoreController {
 
     private final ElectronicStoreItemService electronicStoreItemService;
@@ -83,5 +85,15 @@ public class ElectronicStoreController {
     public String buyItem(@RequestBody BuyOrder buyOrder){
         Integer orderItemNums = electronicStoreItemService.buyItems(buyOrder);
         return "요청하신 Item 중 " +  orderItemNums + "개를 구매하였습니다.";
+    }
+
+
+    @ApiOperation("가성비 싼 거부터 검색")
+    @GetMapping("/items-prices")
+    public List<Item> findItemsByPricing(@RequestParam("max") Integer maxPrice){
+//        log.info("GET /items-prices 요청이 들어왔습니다.");
+        List<Item> items = electronicStoreItemService.findItemsOrderByPrices(maxPrice);
+//        log.info("GET /items-prices 응답: " + items);
+        return items;
     }
 }
