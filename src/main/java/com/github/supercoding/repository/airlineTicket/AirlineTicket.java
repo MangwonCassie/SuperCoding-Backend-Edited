@@ -18,7 +18,7 @@ import java.util.Objects;
 @Builder
 @ToString
 @Entity
-@Table(name="ticketId")
+@Table(name = "airline_ticket")
 public class AirlineTicket {
     @Id
     @Column(name = "ticket_id")

@@ -1,15 +1,17 @@
 package com.github.supercoding.repository.reservations;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@ToString
 public class FlightPriceAndCharge {
     private Double flightPrice;
     private Double charge;
+
+    public FlightPriceAndCharge(Double flightPrice, Double charge) {
+        this.flightPrice = flightPrice;
+        this.charge = charge;
+    }
 }
