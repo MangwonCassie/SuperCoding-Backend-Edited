@@ -17,7 +17,7 @@ import java.util.Optional;
 @ToString
 @Builder
 @Entity
-@Table(name = "item")
+@Table(name = "item", schema = "chapter_96")
 public class ItemEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,17 +33,11 @@ public class ItemEntity {
     @Column(name ="price")
     private Integer price;
 
-//    @ManyToOne
-//    @JoinColumn(name="store_id")
-//    @Column(name = "store_id")
-//    private Integer storeId;
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = true)
     private StoreSales storeSales;
 
-    @Column(name = "stock", columnDefinition = "DEFAULT 0 CHECK(stock) >= 0")
+    @Column(name = "stock", columnDefinition = "integer DEFAULT 0")
     private Integer stock;
 
     @Column(name = "cpu", length = 30)
