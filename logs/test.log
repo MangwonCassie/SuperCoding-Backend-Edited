@@ -3282,3 +3282,71 @@ gi2024-05-29 13:43:23.682 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplica
 2024-05-29 16:40:41.954 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-29 16:40:41.955 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
 >>>>>>> Stashed changes
+2024-09-29 22:35:35.433 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Starting SuperCodingApplication using Java 17.0.9 on DESKTOP-52MHGT8 with PID 10928 (D:\personal\super-coding-javas-main\Spring\super-coding\build\classes\java\main started by user in D:\personal\super-coding-javas-main\Spring\super-coding)
+2024-09-29 22:35:35.437 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - The following 1 profile is active: "dev"
+2024-09-29 22:35:36.410 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-29 22:35:36.411 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29 22:35:36.499 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2024-09-29 22:35:36.500 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-29 22:35:36.500 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29 22:35:36.528 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2024-09-29 22:35:37.478 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port(s): 9090 (http)
+2024-09-29 22:35:37.488 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-9090"]
+2024-09-29 22:35:37.490 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2024-09-29 22:35:37.490 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2024-09-29 22:35:37.803 [main] [34mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2024-09-29 22:35:37.804 [main] [34mINFO [0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 2295 ms
+2024-09-29 22:35:38.060 [main] [34mINFO [0;39m [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29 22:35:38.145 [main] [34mINFO [0;39m [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-29 22:35:38.388 [main] [34mINFO [0;39m [36mo.h.annotations.common.Version[0;39m - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-29 22:35:39.021 [main] [34mINFO [0;39m [36morg.hibernate.dialect.Dialect[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-09-29 22:35:39.788 [main] [34mINFO [0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-29 22:35:39.811 [main] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:35:39.828 [main] [34mINFO [0;39m [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29 22:35:39.915 [main] [34mINFO [0;39m [36morg.hibernate.dialect.Dialect[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-09-29 22:35:40.119 [main] [34mINFO [0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-29 22:35:40.119 [main] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:35:41.374 [main] [34mINFO [0;39m [36ms.d.s.w.PropertySourcedRequestMappingHandlerMapping[0;39m - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-09-29 22:35:41.702 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-9090"]
+2024-09-29 22:35:41.743 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port(s): 9090 (http) with context path ''
+2024-09-29 22:35:41.744 [main] [34mINFO [0;39m [36ms.d.s.w.p.DocumentationPluginsBootstrapper[0;39m - Context refreshed
+2024-09-29 22:35:41.771 [main] [34mINFO [0;39m [36ms.d.s.w.p.DocumentationPluginsBootstrapper[0;39m - Found 1 custom documentation plugin(s)
+2024-09-29 22:35:41.834 [main] [34mINFO [0;39m [36ms.d.s.w.s.ApiListingReferenceScanner[0;39m - Scanning for api listing references
+2024-09-29 22:35:42.071 [main] [34mINFO [0;39m [36ms.d.s.w.r.o.CachingOperationNameGenerator[0;39m - Generating unique operation named: findItemByQueryIdUsingGET_1
+2024-09-29 22:35:42.112 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Started SuperCodingApplication in 7.446 seconds (JVM running for 8.766)
+2024-09-29 22:45:33.314 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:45:33.314 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:45:54.788 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Starting SuperCodingApplication using Java 17.0.9 on DESKTOP-52MHGT8 with PID 40732 (D:\personal\super-coding-javas-main\Spring\super-coding\build\classes\java\main started by user in D:\personal\super-coding-javas-main\Spring\super-coding)
+2024-09-29 22:45:54.797 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - The following 1 profile is active: "dev"
+2024-09-29 22:45:57.998 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-29 22:45:57.999 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29 22:45:58.165 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 131 ms. Found 2 JPA repository interfaces.
+2024-09-29 22:45:58.167 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-29 22:45:58.167 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-29 22:45:58.222 [main] [34mINFO [0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m - Finished Spring Data repository scanning in 54 ms. Found 4 JPA repository interfaces.
+2024-09-29 22:46:00.289 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port(s): 9090 (http)
+2024-09-29 22:46:00.318 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Initializing ProtocolHandler ["http-nio-9090"]
+2024-09-29 22:46:00.323 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+2024-09-29 22:46:00.324 [main] [34mINFO [0;39m [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2024-09-29 22:46:00.751 [main] [34mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+2024-09-29 22:46:00.752 [main] [34mINFO [0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 5818 ms
+2024-09-29 22:46:01.218 [main] [34mINFO [0;39m [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29 22:46:01.406 [main] [34mINFO [0;39m [36morg.hibernate.Version[0;39m - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-29 22:46:01.957 [main] [34mINFO [0;39m [36mo.h.annotations.common.Version[0;39m - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-29 22:46:03.378 [main] [34mINFO [0;39m [36morg.hibernate.dialect.Dialect[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-09-29 22:46:04.953 [main] [34mINFO [0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-29 22:46:04.988 [main] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:46:05.020 [main] [34mINFO [0;39m [36mo.h.jpa.internal.util.LogHelper[0;39m - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-29 22:46:05.174 [main] [34mINFO [0;39m [36morg.hibernate.dialect.Dialect[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-09-29 22:46:05.544 [main] [34mINFO [0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-29 22:46:05.545 [main] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:46:08.041 [main] [34mINFO [0;39m [36ms.d.s.w.PropertySourcedRequestMappingHandlerMapping[0;39m - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-09-29 22:46:08.666 [main] [34mINFO [0;39m [36mo.a.coyote.http11.Http11NioProtocol[0;39m - Starting ProtocolHandler ["http-nio-9090"]
+2024-09-29 22:46:08.723 [main] [34mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port(s): 9090 (http) with context path ''
+2024-09-29 22:46:08.725 [main] [34mINFO [0;39m [36ms.d.s.w.p.DocumentationPluginsBootstrapper[0;39m - Context refreshed
+2024-09-29 22:46:08.782 [main] [34mINFO [0;39m [36ms.d.s.w.p.DocumentationPluginsBootstrapper[0;39m - Found 1 custom documentation plugin(s)
+2024-09-29 22:46:08.865 [main] [34mINFO [0;39m [36ms.d.s.w.s.ApiListingReferenceScanner[0;39m - Scanning for api listing references
+2024-09-29 22:46:09.314 [main] [34mINFO [0;39m [36ms.d.s.w.r.o.CachingOperationNameGenerator[0;39m - Generating unique operation named: findItemByQueryIdUsingGET_1
+2024-09-29 22:46:09.383 [main] [34mINFO [0;39m [36mc.g.s.SuperCodingApplication[0;39m - Started SuperCodingApplication in 15.992 seconds (JVM running for 26.246)
+2024-09-29 22:48:42.894 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-29 22:48:42.895 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m - Closing JPA EntityManagerFactory for persistence unit 'default'
